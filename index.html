@@ -17,7 +17,128 @@
       scroll-behavior: smooth;
     }
 
+    #choose-service {
+  background: #f0f0f0;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+#choose-service h1 {
+  margin-bottom: 30px;
+}
+
+.service-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.service-card {
+  position: relative;
+  width: 250px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.service-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.service-card .card-title {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 1.2rem;
+  transition: background 0.3s;
+}
+
+.service-card:hover img {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.service-card:hover .card-title {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* Modal styling (same as before) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  background: #fff;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.modal-content button {
+  background: #1dc4e9;
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.modal-content button:hover {
+  background: #17bfa7;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
     /* NAVIGATION */
+
+    .logo img {
+      height: 50px; /* You can adjust this to any size you want */
+      width: auto;
+      object-fit: contain;
+    } 
+
     nav {
       position: sticky;
       top: 0;
@@ -98,8 +219,55 @@
       background: linear-gradient(135deg, #1dc4e9, #1de9b6);
       color: #fff;
     }
+
+
+    .video-section {
+  position: relative;
+  padding: 100px 20px;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* adjust overlay darkness */
+  z-index: 2;
+}
+
+.video-section .content {
+  position: relative;
+  z-index: 3;
+}
+
+@media (max-width: 768px) {
+  .video-section {
+    padding: 80px 15px;
+  }
+  .video-section h1 {
+    font-size: 2rem;
+  }
+  .video-section p {
+    font-size: 1rem;
+  }
+}
+
     #hero3 {
-      background: linear-gradient(135deg, #1de9b6, #1dc4e9);
+      background: linear-gradient(135deg, #2e2e2e 0%, #000 100%);
       color: #fff;
     }
 
@@ -204,7 +372,9 @@
 
   <!-- Navbar -->
   <nav>
-    <div class="logo">HUF</div>
+    <div class="logo">
+    <img src="./logo.png" alt="HUF Logo" />
+    </div>
     <div class="menu">
       <a href="#hero1">Home</a>
       <a href="#about">About</a>
@@ -215,55 +385,108 @@
 
   <!-- Hero Sections -->
   <section id="hero1">
-    <h1>Welcome to HUF Cleaning</h1>
-    <p>We provide top-quality cleaning services to make your spaces shine and feel fresh every day.</p>
-    <a href="#about" class="btn">Learn More</a>
+    <h1>Willkommen bei HUF Cleaning</h1>
+    <p>Wir bieten hochwertige Reinigungsdienstleistungen, damit Ihre Räume jeden Tag glänzen und frisch wirken.</p>
+    <a href="#about" class="btn">Mehr erfahren</a>
   </section>
 
-  <section id="hero2">
-    <h1>Reliable & Professional</h1>
-    <p>Our experienced team delivers reliable, efficient, and eco-friendly cleaning solutions tailored to your needs.</p>
-    <a href="#services" class="btn">Our Services</a>
-  </section>
-
+ <!-- ZAPRAVO HERO 2 -->
   <section id="hero3">
-    <h1>Your Satisfaction, Our Priority</h1>
-    <p>We take pride in exceeding expectations and creating a spotless, healthy environment for your home or business.</p>
-    <a href="#contact" class="btn">Contact Us</a>
+    <h1>Ihre Zufriedenheit, unsere Priorität</h1>
+    <p>Wir sind stolz darauf, Ihre Erwartungen zu übertreffen und eine makellose, gesunde Umgebung für Ihr Zuhause oder Ihr Unternehmen zu schaffen.</p>
+     <!-- <a href="#contact" class="btn">Kontaktieren Sie uns</a> -->
   </section>
+
+  <section id="choose-service">
+  <h1>Wobei benötigen Sie Hilfe?</h1>
+  <div class="service-cards">
+    <div class="service-card" data-service="House Cleaning">
+      <img src="./housecleaning.jpg" alt="House Cleaning" />
+      <div class="card-title">Innenreinigung</div>
+    </div>
+    <div class="service-card" data-service="Garden Cleaning">
+      <img src="./garden cleaning.jpg" alt="Garden Cleaning" />
+      <div class="card-title">Außenreinigung</div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal Popup -->
+<div id="email-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="service-title">Contact Us</h2>
+    <form id="popup-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Email</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal Popup -->
+<div id="email-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="service-title">Contact Us</h2>
+    <form id="popup-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Email</button>
+    </form>
+  </div>
+</div>
+
+
+  <section id="hero2" class="video-section">
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="./6195516-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <div class="video-overlay"></div>
+  <div class="content">
+    <h1>Zuverlässig & professionell</h1>
+    <p>Unser erfahrenes Team liefert zuverlässige, effiziente und umweltfreundliche Reinigungslösungen, die auf Ihre Bedürfnisse zugeschnitten sind.</p>
+    <a href="#services" class="btn">Unsere Dienstleistungen</a>
+  </div>
+</section>
+
 
   <!-- About -->
   <section id="about">
-    <h1>About Us</h1>
-    <p>HUF Cleaning has been serving the community with dedication and care for over 10 years. Our mission is to make every space cleaner, healthier, and more welcoming. We focus on attention to detail, personalized service, and using safe, eco-friendly products.</p>
+    <h1>Über uns</h1>
+    <p>HUF Cleaning bedient die Gemeinschaft seit über 10 Jahren mit Hingabe und Sorgfalt. Unsere Mission ist es, jeden Raum sauberer, gesünder und einladender zu gestalten. 
+      Wir legen Wert auf Liebe zum Detail, persönlichen Service und die Verwendung sicherer, umweltfreundlicher Produkte.</p>
   </section>
 
   <!-- Services -->
   <section id="services">
-    <h1>What We Do</h1>
-    <p>Explore our specialized cleaning services designed to meet different needs.</p>
+    <h1>Was wir tun</h1>
+    <p>Entdecken Sie unsere spezialisierten Reinigungsdienste, die auf verschiedene Bedürfnisse zugeschnitten sind.</p>
     <div class="cards">
       <div class="card">
-        <h3>Residential Cleaning</h3>
-        <p>Thorough cleaning for homes and apartments, including deep kitchen and bathroom cleaning, dusting, and more.</p>
+        <h3>Wohnungsreinigung</h3>
+        <p>Gründliche Reinigung von Häusern und Wohnungen, einschließlich intensiver Küchen- und Badreinigung, Staubwischen und mehr.</p>
       </div>
       <div class="card">
-        <h3>Office Cleaning</h3>
-        <p>Professional office cleaning to maintain a productive, spotless workspace that keeps your staff happy and healthy.</p>
+        <h3>Büroreinigung</h3>
+        <p>Professionelle Reinigung von Büros, um einen produktiven, makellosen Arbeitsplatz zu schaffen, der Ihre Mitarbeiter zufrieden und gesund hält.</p>
       </div>
       <div class="card">
-        <h3>Move-in/Move-out</h3>
-        <p>Detailed cleaning for moving day — we make sure your new place is sparkling clean, or leave your old one spotless.</p>
+        <h3>Einzugs-/Auszugsreinigung</h3>
+        <p>Detaillierte Reinigung für den Umzugstag – wir sorgen dafür, dass Ihr neues Zuhause blitzsauber ist oder Ihr altes tadellos hinterlassen wird.</p>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
   <section id="contact">
-    <h1>Contact Us</h1>
+    <h1>Kontaktieren Sie uns</h1>
     <p>Email: contact@hufcleaning.com</p>
     <p>Phone: +1 (555) 123-4567</p>
-    <p>Address: 123 Sparkle Street, Clean City</p>
+    <p>Address: Mauthausen</p>
 
     <form id="contact-form">
       <input type="text" name="name" placeholder="Your Name" required />
@@ -274,6 +497,8 @@
   </section>
 
   <script>
+
+    
     // Scroll animation for sections and cards
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -289,6 +514,38 @@
     document.querySelectorAll('.card').forEach(card => {
       observer.observe(card);
     });
+
+
+
+          document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('click', () => {
+          // Update modal title
+          const service = card.getAttribute('data-service');
+          document.getElementById('service-title').textContent = `Contact Us for ${service}`;
+          
+          // Show modal
+          document.getElementById('email-modal').style.display = 'block';
+        });
+      });
+
+      // Close modal when clicking on close button
+      document.querySelector('.close').addEventListener('click', () => {
+        document.getElementById('email-modal').style.display = 'none';
+      });
+
+      // Close modal when clicking outside modal content
+      window.addEventListener('click', (e) => {
+        if (e.target == document.getElementById('email-modal')) {
+          document.getElementById('email-modal').style.display = 'none';
+        }
+      });
+
+      // Example form submission handling (just closes modal for now)
+      document.getElementById('popup-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Your message has been sent!');
+        document.getElementById('email-modal').style.display = 'none';
+      });
   </script>
 </body>
 </html>
