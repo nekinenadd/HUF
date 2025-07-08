@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HUF Cleaning Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     /* RESET + BASE */
     * {
@@ -11,168 +11,21 @@
       padding: 0;
       box-sizing: border-box;
     }
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       background: #f9f9f9;
       color: #333;
-      scroll-behavior: smooth;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
     }
 
-    #choose-service {
-  background: #f0f0f0;
-  padding: 80px 20px;
-  text-align: center;
-}
-
-#choose-service h1 {
-  margin-bottom: 30px;
-}
-
-.service-cards {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.service-card {
-  position: relative;
-  width: 250px;
-  height: 300px;
-  overflow: hidden;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.service-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s, opacity 0.3s;
-}
-
-.service-card .card-title {
-  position: absolute;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  color: #fff;
-  padding: 10px 0;
-  text-align: center;
-  font-size: 1.2rem;
-  transition: background 0.3s;
-}
-
-.service-card:hover img {
-  transform: scale(1.05);
-  opacity: 0.9;
-}
-
-.service-card:hover .card-title {
-  background: rgba(0, 0, 0, 0.7);
-}
-
-/* Modal styling (same as before) */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-}
-
-.modal-content {
-  background: #fff;
-  margin: 10% auto;
-  padding: 30px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 400px;
-  position: relative;
-}
-
-.modal-content h2 {
-  margin-top: 0;
-}
-
-.modal-content input,
-.modal-content textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.modal-content button {
-  background: #1dc4e9;
-  color: white;
-  border: none;
-  padding: 12px;
-  width: 100%;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.modal-content button:hover {
-  background: #17bfa7;
-}
-
-.close {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-
-    /* NAVIGATION */
-
-    .logo img {
-      height: 50px; /* You can adjust this to any size you want */
-      width: auto;
-      object-fit: contain;
-    } 
-
-    nav {
-      position: sticky;
-      top: 0;
-      background: #ffffffee;
-      backdrop-filter: blur(6px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      z-index: 1000;
-    }
-    nav .logo {
-      font-weight: bold;
-      color: #1dc4e9;
-      font-size: 1.2rem;
-    }
-    nav .menu {
-      display: flex;
-      gap: 20px;
-    }
-    nav .menu a {
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav .menu a:hover {
-      color: #1dc4e9;
-    }
-
-    /* SECTION BASE */
     section {
+      scroll-snap-align: start;
+      min-height: 100vh;
       padding: 100px 20px;
       text-align: center;
       opacity: 0;
@@ -185,33 +38,63 @@
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 20px;
     }
-
     p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       max-width: 700px;
       margin: 0 auto 20px;
-      line-height: 1.6;
+      line-height: 1.5;
     }
-
     .btn {
       display: inline-block;
       margin-top: 30px;
       padding: 12px 30px;
       font-size: 1rem;
-      text-decoration: none;
       background: #1dc4e9;
       color: #fff;
       border-radius: 30px;
+      text-decoration: none;
       transition: background 0.3s;
     }
     .btn:hover {
       background: #17bfa7;
     }
 
-    /* Hero backgrounds with turquoise gradients */
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      background: #ffffffee;
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      z-index: 1000;
+    }
+    nav .logo img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+    nav .menu {
+      display: flex;
+      gap: 15px;
+    }
+    nav .menu a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: color 0.3s;
+      font-size: 0.95rem;
+    }
+    nav .menu a:hover {
+      color: #1dc4e9;
+    }
+
+    /* Hero backgrounds with refined turquoise gradients */
     #hero1 {
       background: linear-gradient(135deg, #1de9b6, #1dc4e9);
       color: #fff;
@@ -220,67 +103,16 @@
       background: linear-gradient(135deg, #1dc4e9, #1de9b6);
       color: #fff;
     }
-
-
-    .video-section {
-  position: relative;
-  padding: 100px 20px;
-  text-align: center;
-  color: #fff;
-  overflow: hidden;
-}
-
-.bg-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-}
-
-.video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4); /* adjust overlay darkness */
-  z-index: 2;
-}
-
-.video-section .content {
-  position: relative;
-  z-index: 3;
-}
-
-@media (max-width: 768px) {
-  .video-section {
-    padding: 80px 15px;
-  }
-  .video-section h1 {
-    font-size: 2rem;
-  }
-  .video-section p {
-    font-size: 1rem;
-  }
-}
-
     #hero3 {
-      background: linear-gradient(135deg, #2e2e2e 0%, #000 100%);
+      background: linear-gradient(135deg, #1de9b6, #1dc4e9);
       color: #fff;
     }
-
-    #about {
+    #about, #services, #contact {
       background: #fff;
       color: #333;
     }
 
-    #services {
-      background: #f0f0f0;
-    }
-
+    /* Cards */
     .cards {
       display: flex;
       flex-wrap: wrap;
@@ -292,7 +124,7 @@
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      padding: 30px;
+      padding: 25px;
       max-width: 300px;
       transition: transform 0.3s, box-shadow 0.3s;
       opacity: 0;
@@ -310,18 +142,14 @@
     .card h3 {
       margin-top: 0;
       margin-bottom: 10px;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       color: #1dc4e9;
     }
     .card p {
-      font-size: 1rem;
-      line-height: 1.5;
+      font-size: 0.95rem;
     }
 
-    #contact {
-      background: #333;
-      color: #fff;
-    }
+    /* Contact form */
     #contact-form {
       max-width: 500px;
       margin: 30px auto 0;
@@ -332,7 +160,7 @@
       width: 100%;
       padding: 12px;
       margin-bottom: 15px;
-      border: none;
+      border: 1px solid #ccc;
       border-radius: 6px;
     }
     #contact-form button {
@@ -349,67 +177,28 @@
       background: #17bfa7;
     }
 
-
-  @media (max-width: 600px) {
-  section {
-    height: 100vh;        /* force section to full screen height */
-    min-height: 100vh;    /* ensure it doesn't shrink */
-    padding: 0;           /* remove extra padding SSSSSSSSSS*/
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* vertically center content */
-    align-items: center;     /* horizontally center content */
-    text-align: center;
-  }
-
-  section h1 {
-    font-size: 2rem;
-    margin: 20px 0;
-    padding: 0 10px;
-  }
-
-  section p {
-    font-size: 1rem;
-    margin: 10px 0;
-    padding: 0 15px;
-  }
-
-  .btn {
-    margin-top: 15px;
-    padding: 12px 25px;
-  }
-
-  .cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card {
-    max-width: 90%;
-  }
-
-  #choose-service .service-cards {
-    flex-direction: column;
-  }
-
-  .service-card {
-    width: 90%;
-    height: auto;
-  }
-}
-
-
-
-
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1rem;
+        padding: 0 10px;
+      }
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav .menu a {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
   <nav>
-    <div class="logo">
-    <img src="./logo.png" alt="HUF Logo" />
-    </div>
+    <div class="logo"><img src="./logo.png" alt="HUF Logo" /></div>
     <div class="menu">
       <a href="#hero1">Home</a>
       <a href="#about">About</a>
@@ -418,85 +207,29 @@
     </div>
   </nav>
 
-  <!-- Hero Sections -->
   <section id="hero1">
-    <h1>Willkommen bei HUH Cleaning</h1>
+    <h1>Willkommen bei HUF Cleaning</h1>
     <p>Wir bieten hochwertige Reinigungsdienstleistungen, damit Ihre Räume jeden Tag glänzen und frisch wirken.</p>
     <a href="#about" class="btn">Mehr erfahren</a>
   </section>
 
- <!-- ZAPRAVO HERO 2 -->
-  <section id="hero3">
-    <h1>Ihre Zufriedenheit, unsere Priorität</h1>
-    <p>Wir sind stolz darauf, Ihre Erwartungen zu übertreffen und eine makellose, gesunde Umgebung für Ihr Zuhause oder Ihr Unternehmen zu schaffen.</p>
-     <!-- <a href="#contact" class="btn">Kontaktieren Sie uns</a> -->
-  </section>
-
-  <section id="choose-service">
-  <h1>Wobei benötigen Sie Hilfe?</h1>
-  <div class="service-cards">
-    <div class="service-card" data-service="House Cleaning">
-      <img src="./housecleaning.jpg" alt="House Cleaning" />
-      <div class="card-title">Innenreinigung</div>
-    </div>
-    <div class="service-card" data-service="Garden Cleaning">
-      <img src="./garden cleaning.jpg" alt="Garden Cleaning" />
-      <div class="card-title">Außenreinigung</div>
-    </div>
-  </div>
-</section>
-
-<!-- Modal Popup -->
-<div id="email-modal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2 id="service-title">Contact Us</h2>
-    <form id="popup-form">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Email</button>
-    </form>
-  </div>
-</div>
-
-<!-- Modal Popup -->
-<div id="email-modal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2 id="service-title">Contact Us</h2>
-    <form id="popup-form">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Email</button>
-    </form>
-  </div>
-</div>
-
-
-  <section id="hero2" class="video-section">
-  <video autoplay muted loop playsinline class="bg-video">
-    <source src="./6195516-uhd_3840_2160_25fps.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-  <div class="video-overlay"></div>
-  <div class="content">
+  <section id="hero2">
     <h1>Zuverlässig & professionell</h1>
     <p>Unser erfahrenes Team liefert zuverlässige, effiziente und umweltfreundliche Reinigungslösungen, die auf Ihre Bedürfnisse zugeschnitten sind.</p>
     <a href="#services" class="btn">Unsere Dienstleistungen</a>
-  </div>
-</section>
-
-
-  <!-- About -->
-  <section id="about">
-    <h1>Über uns</h1>
-    <p>HUF Cleaning bedient die Gemeinschaft seit über 10 Jahren mit Hingabe und Sorgfalt. Unsere Mission ist es, jeden Raum sauberer, gesünder und einladender zu gestalten. 
-      Wir legen Wert auf Liebe zum Detail, persönlichen Service und die Verwendung sicherer, umweltfreundlicher Produkte.</p>
   </section>
 
-  <!-- Services -->
+  <section id="hero3">
+    <h1>Ihre Zufriedenheit, unsere Priorität</h1>
+    <p>Wir sind stolz darauf, Ihre Erwartungen zu übertreffen und eine makellose, gesunde Umgebung für Ihr Zuhause oder Ihr Unternehmen zu schaffen.</p>
+    <a href="#contact" class="btn">Kontaktieren Sie uns</a>
+  </section>
+
+  <section id="about">
+    <h1>Über uns</h1>
+    <p>HUF Cleaning bedient die Gemeinschaft seit über 10 Jahren mit Hingabe und Sorgfalt. Unsere Mission ist es, jeden Raum sauberer, gesünder und einladender zu gestalten. Wir legen Wert auf Liebe zum Detail, persönlichen Service und die Verwendung sicherer, umweltfreundlicher Produkte.</p>
+  </section>
+
   <section id="services">
     <h1>Was wir tun</h1>
     <p>Entdecken Sie unsere spezialisierten Reinigungsdienste, die auf verschiedene Bedürfnisse zugeschnitten sind.</p>
@@ -507,22 +240,20 @@
       </div>
       <div class="card">
         <h3>Büroreinigung</h3>
-        <p>Professionelle Reinigung von Büros, um einen produktiven, makellosen Arbeitsplatz zu schaffen, der Ihre Mitarbeiter zufrieden und gesund hält.</p>
+        <p>Professionelle Reinigung von Büros, um einen produktiven, makellosen Arbeitsplatz zu schaffen.</p>
       </div>
       <div class="card">
         <h3>Einzugs-/Auszugsreinigung</h3>
-        <p>Detaillierte Reinigung für den Umzugstag – wir sorgen dafür, dass Ihr neues Zuhause blitzsauber ist oder Ihr altes tadellos hinterlassen wird.</p>
+        <p>Detaillierte Reinigung für den Umzugstag – wir sorgen dafür, dass Ihr neues Zuhause blitzsauber ist.</p>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
   <section id="contact">
-    <h1>Kontaktieren Sie uns</h1>
+    <h1>Contact Us</h1>
     <p>Email: contact@hufcleaning.com</p>
     <p>Phone: +1 (555) 123-4567</p>
-    <p>Address: Mauthausen</p>
-
+    <p>Address: 123 Sparkle Street, Clean City</p>
     <form id="contact-form">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email" required />
@@ -532,10 +263,8 @@
   </section>
 
   <script>
-
-    
-    // Scroll animation for sections and cards
-    const observer = new IntersectionObserver((entries) => {
+    // Animate on scroll
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('show');
@@ -543,44 +272,8 @@
       });
     }, { threshold: 0.2 });
 
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
-    document.querySelectorAll('.card').forEach(card => {
-      observer.observe(card);
-    });
-
-
-
-          document.querySelectorAll('.service-card').forEach(card => {
-        card.addEventListener('click', () => {
-          // Update modal title
-          const service = card.getAttribute('data-service');
-          document.getElementById('service-title').textContent = `Contact Us for ${service}`;
-          
-          // Show modal
-          document.getElementById('email-modal').style.display = 'block';
-        });
-      });
-
-      // Close modal when clicking on close button
-      document.querySelector('.close').addEventListener('click', () => {
-        document.getElementById('email-modal').style.display = 'none';
-      });
-
-      // Close modal when clicking outside modal content
-      window.addEventListener('click', (e) => {
-        if (e.target == document.getElementById('email-modal')) {
-          document.getElementById('email-modal').style.display = 'none';
-        }
-      });
-
-      // Example form submission handling (just closes modal for now)
-      document.getElementById('popup-form').addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Your message has been sent!');
-        document.getElementById('email-modal').style.display = 'none';
-      });
+    document.querySelectorAll('section, .card').forEach(el => observer.observe(el));
   </script>
+
 </body>
 </html>
