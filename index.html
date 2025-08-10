@@ -196,6 +196,23 @@
   text-align: center;
 }
 
+#services {
+  position: relative;
+  padding: 60px 20px;
+  text-align: center;
+  overflow: hidden; /* hides blur edges */
+}
+
+#services::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/logo.png") center/cover no-repeat;
+  filter: blur(8px);   /* Blur only this layer */
+  z-index: -1;         /* Put it behind the content */
+}
+
+
 #services h2 {
   font-size: 2.5rem;
   margin-bottom: 10px;
@@ -508,6 +525,64 @@
         height: 200px;
       }
     }
+
+    /* === Footer (Policy & Privacy) === */
+footer.site-footer {
+  background: #0f172a; /* dark slate */
+  color: #e5e7eb;      /* light text */
+  text-align: center;
+  padding: 16px 20px;
+}
+
+footer.site-footer a {
+  color: #1dc4e9;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+footer.site-footer a:hover,
+footer.site-footer a:focus {
+  text-decoration: underline;
+}
+
+/* Optional modal styling if not already in your CSS */
+#privacy-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+#privacy-modal .modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 720px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+#privacy-modal .close {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
   </style>
 </head>
 <body>
@@ -525,7 +600,7 @@
   </nav>
 
   <section id="hero1">
-    <h1>Willkommen bei HUH Cleaning</h1>
+    <h1>Willkommen bei Haus und Hof</h1>
     <p>Wir bieten hochwertige Reinigungsdienstleistungen, damit Ihre Räume jeden Tag glänzen.</p>
     <a href="#choose-service" class="btn">Mehr erfahren</a>
   </section>
@@ -559,6 +634,10 @@
   <div class="card-container">
     <div class="card">
       <h3>Wohnungsreinigung</h3>
+      <p>Gründliche Reinigung von Häusern und Wohnungen, einschließlich intensiver Küchen- und Badreinigung, Staubwischen und mehr.</p>
+    </div>
+    <div class="card">
+      <h3>Unterhaltsreinigung</h3>
       <p>Gründliche Reinigung von Häusern und Wohnungen, einschließlich intensiver Küchen- und Badreinigung, Staubwischen und mehr.</p>
     </div>
     <div class="card">
@@ -600,11 +679,11 @@
     <div class="service-cards">
       <div class="service-card" data-service="Innenreinigung" onclick="">
         <img src="./inside.jpg" alt="Innenreinigung">
-        <span>Innenreinigung</span>
+        <span>Unterhaltsreinigung,Sonderreinigung,Stiegenhausreinigung,Reinigung aller art,</span>
       </div>
       <div class="service-card" data-service="Außenreinigung">
         <img src="./outside.jpg" alt="Außenreinigung">
-        <span>Außenreinigung</span>
+        <span>Grünanlagen und Winterdienst</span>
       </div>
     </div>
   </section>
@@ -619,7 +698,7 @@
     </form>
   </section>
 
-  <a href="tel:+43123456789" class="call-button" aria-label="Call us now">
+  <a href="tel:+436504138873" class="call-button" aria-label="Call us now">
   📞
   </a>
 
@@ -633,7 +712,59 @@
     </div>
   </div>
 
+
+
+
+  <footer class="site-footer">
+  <a href="#" id="privacy-link">Datenschutz &amp; Richtlinien</a>
+  </footer>
+
+  <!-- Privacy & Policy Modal -->
+  <div class="modal" id="privacy-modal">
+    <div class="modal-content">
+      <span class="close" id="privacy-close">&times;</span>
+      <h2>Datenschutz &amp; Richtlinien</h2>
+      <p><strong>Wer wir sind:</strong> HAUS & HOF REINIGUNGSSERVICE .</p>
+      <p><strong>Was wir sammeln:</strong> Kontaktdaten, die Sie übermitteln (Dragana Bogdan, huh-betreuung@outlook.at,)</p>
+      <p><strong>Ihre Rechte:</strong> Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch.</p>
+      <p><strong>Bezirkshauptrmannschaft</strong>Perg</p>
+      <p><strong>UID nummer</strong>ATU82143468</p>
+      <p><strong>Kontakt:</strong> <a href="mailto:huh-betreuung@outlook.at">huh-betreuung@outlook.at</p>
+
+    </div>
+  </div>
+
+
   <script>
+
+  const privacyLink = document.getElementById('privacy-link');
+  const privacyModal = document.getElementById('privacy-modal');
+  const privacyClose = document.getElementById('privacy-close');
+
+  privacyLink.addEventListener('click', function(e) {
+    e.preventDefault();
+    privacyModal.style.display = 'flex';
+  });
+
+  privacyClose.addEventListener('click', function() {
+    privacyModal.style.display = 'none';
+  });
+
+  window.addEventListener('click', function(e) {
+    if (e.target === privacyModal) {
+      privacyModal.style.display = 'none';
+    }
+  });
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      privacyModal.style.display = 'none';
+    }
+  });
+
+
+
+
     // Animate sections
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {

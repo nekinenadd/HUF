@@ -4,3 +4,5 @@ function openForm(type) {
   const contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
   contactModal.show();
 }
+
+
