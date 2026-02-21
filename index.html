@@ -4,598 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HUF Cleaning Services</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-        #about, #services, #contact {
-      background: #fff;
-      color: #333;
-    }
-    body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background: #f9f9f9;
-      color: #333;
-    }
-
-    section {
-      scroll-snap-align: start;
-      min-height: 100vh;
-      padding: 100px 20px;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease, transform 1s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    section.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      background: #ffffffee;
-      backdrop-filter: blur(6px);
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      z-index: 1000;
-    }
-    .logo img {
-      height: 40px;
-    }
-    nav .menu {
-      display: flex;
-      gap: 15px;
-    }
-    nav .menu a {
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      font-size: 0.95rem;
-      transition: color 0.3s;
-    }
-    nav .menu a:hover {
-      color: #1dc4e9;
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1rem;
-      max-width: 600px;
-      margin: 0 auto 20px;
-      line-height: 1.5;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      font-size: 1rem;
-      background: #1dc4e9;
-      color: #fff;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-    .btn:hover {
-      background: #17bfa7;
-    }
-    #hero1 {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  padding: 2rem;
-  background-image: url("inside.jpg"); /* example image */
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-}
-
-#hero1::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55); /* optional dark overlay for better contrast */
-  backdrop-filter: blur(3px); /* subtle blur effect */
-  z-index: 1;
-}
-
-#hero1 > * {
-  position: relative;
-  z-index: 2;
-}
-
-#hero1 h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-#hero1 p {
-  font-size: 1.2rem;
-  max-width: 600px;
-}
-
-#hero1 button {
-  margin-top: 1.5rem;
-  padding: 0.75rem 2rem;
-  font-size: 1rem;
-  background-color: #00bfa6;
-  color: white;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#hero1 button:hover {
-  background-color: #009e87;
-}
-
-
-    #hero3 {
-      background: linear-gradient(135deg, #1de9b6, #1dc4e9);
-      color: #fff;
-    }
-
-
-
-    .video-section {
-      position: relative;
-      color: #fff;
-      overflow: hidden;
-    }
-    .bg-video {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: 1;
-    }
-    .video-overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 2;
-    }
-    .video-section .content {
-      position: relative;
-      z-index: 3;
-    }
-
-    #choose-service,
-    #contact {
-      background: #f0f0f0;
-    }
-    #choose-service h1 {
-      margin-bottom: 30px;
-    }
-
-    #services {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-#services {
-  position: relative;
-  padding: 60px 20px;
-  text-align: center;
-  overflow: hidden; /* hides blur edges */
-}
-
-#services::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("/logo.png") center/cover no-repeat;
-  filter: blur(8px);   /* Blur only this layer */
-  z-index: -1;         /* Put it behind the content */
-}
-
-
-#services h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-#services p {
-  max-width: 700px;
-  margin: 0 auto 40px;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-.card-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap; /* allows them to wrap on smaller screens */
-}
-
-.card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  flex: 1 1 300px; /* ← makes them grow/shrink nicely */
-  max-width: 300px;
-  padding: 25px;
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
-
-.card h3 {
-  margin-top: 0;
-  font-size: 1.3rem;
-  color: #333;
-}
-
-.card p {
-  margin-bottom: 0;
-  font-size: 1rem;
-  color: #666;
-}
-
-@media (max-width: 768px) {
-  .card-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card {
-    max-width: 90%;
-  }
-}
-
-.steps-section {
-  text-align: center;
-  padding: 80px 20px;
-  background-color: #f9f9f9;
-}
-
-.steps-section h2 {
-  font-size: 2rem;
-  margin-bottom: 40px;
-}
-
-.steps-cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.step-card {
-  background: white;
-  border-radius: 12px;
-  padding: 30px 20px;
-  width: 280px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.step-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
-
-.step-number {
-  width: 50px;
-  height: 50px;
-  background-color:  #00bfa6; /* turquoise color */
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  margin: 0 auto 15px auto;
-}
-
-.step-card h3 {
-  font-size: 1.2rem;
-  margin: 10px 0;
-}
-
-.step-card p {
-  font-size: 0.95rem;
-  color: #555;
-}
-
-.call-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #00bfa6; /* turquoise color */
-  color: white;
-  font-size: 24px;
-  text-decoration: none;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s, transform 0.3s;
-  z-index: 1000;
-}
-
-.call-button:hover {
-  background-color: #009e8c;
-  transform: scale(1.1);
-}
-
-    .about-highlight {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 80px 20px;
-  background-color: #fff;
-}
-
-.about-content {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  gap: 30px;
-  align-items: center;
-}
-
-.about-content img {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-
-.about-text {
-  flex: 1;
-  min-width: 280px;
-}
-
-.about-text h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.about-text p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.about-text .btn {
-  display: inline-block;
-  padding: 12px 25px;
-  background: #00bfa6; /* primary turquoise */
-  color: white;
-  border-radius: 30px;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-
-.about-text .btn:hover {
-  background: #009e8c;
-}
-
-@media (max-width: 768px) {
-  .about-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .about-content img {
-    max-width: 90%;
-  }
-}
-
-
-
-
-    .service-cards {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-    .service-card {
-      position: relative;
-      width: 200px;
-      height: 250px;
-      overflow: hidden;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    .service-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .service-card span {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.6);
-      color: #fff;
-      padding: 10px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 1.1rem;
-      transition: background 0.4s ease;
-    }
-    .service-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.3);
-    }
-    .service-card:active img {
-      transform: scale(1.1);
-    }
-    .service-card:hover span {
-      background: rgba(0,0,0,0.8);
-    }
-
-    #contact form {
-      max-width: 500px;
-      margin: 0 auto;
-      text-align: left;
-    }
-    #contact form input,
-    #contact form textarea {
-      width: 100%;
-      margin: 10px 0;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    #contact form button {
-      background: #1dc4e9;
-      color: #fff;
-      border: none;
-      padding: 12px;
-      width: 100%;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    #contact form button:hover {
-      background: #17bfa7;
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0; top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-content {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      max-width: 400px;
-      text-align: center;
-    }
-    .close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 24px;
-      color: #333;
-      cursor: pointer;
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 1.7rem; }
-      p { font-size: 0.95rem; }
-      .service-card {
-        width: 160px;
-        height: 200px;
-      }
-    }
-
-    /* === Footer (Policy & Privacy) === */
-footer.site-footer {
-  background: #0f172a; /* dark slate */
-  color: #e5e7eb;      /* light text */
-  text-align: center;
-  padding: 16px 20px;
-}
-
-footer.site-footer a {
-  color: #1dc4e9;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-footer.site-footer a:hover,
-footer.site-footer a:focus {
-  text-decoration: underline;
-}
-
-/* Optional modal styling if not already in your CSS */
-#privacy-modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-}
-
-#privacy-modal .modal-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 720px;
-  max-height: 80vh;
-  overflow-y: auto;
-  position: relative;
-}
-
-#privacy-modal .close {
-  position: absolute;
-  right: 12px;
-  top: 8px;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-
-
-
-
-
-
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 
   <nav>
     <div class="logo">
-      <img src="./logo.png" alt="Logo" />
+      <img src="assets/media/logonobackground.png" alt="Logo" />
     </div>
     <div class="menu">
       <a href="#hero1">Home</a>
       <a href="#hero2">Über uns</a>
       <a href="#choose-service">Service</a>
-      <a href="#contact">Kontakt</a>
+      <a href="#choose-service">Kontakt</a>
     </div>
   </nav>
 
@@ -607,7 +28,7 @@ footer.site-footer a:focus {
 
   <section id="about-highlight" class="about-highlight">
   <div class="about-content">
-    <img src="./inside.jpg" alt="Unser Reinigungsteam" />
+    <img src="assets/media/inside.jpg" alt="Unser Reinigungsteam" />
     <div class="about-text">
       <h2>Unser engagiertes Team</h2>
       <p>Wir sind stolz auf unser Team aus erfahrenen Fachkräften, die mit Leidenschaft für Sauberkeit arbeiten. Unser Ziel ist es, Ihnen den besten Service zu bieten und Ihre Zufriedenheit zu gewährleisten.</p>
@@ -618,7 +39,7 @@ footer.site-footer a:focus {
 
   <section id="hero2" class="video-section">
     <video autoplay muted loop playsinline class="bg-video">
-      <source src="./6195516-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+      <source src="assets/media/6195516-uhd_3840_2160_25fps.mp4" type="video/mp4" />
     </video>
     <div class="video-overlay"></div>
     <div class="content">
@@ -677,25 +98,15 @@ footer.site-footer a:focus {
   <section id="choose-service">
     <h1>Wobei brauchen Sie Hilfe?</h1>
     <div class="service-cards">
-      <div class="service-card" data-service="Innenreinigung" onclick="">
-        <img src="./inside.jpg" alt="Innenreinigung">
+      <div class="service-card" data-service="Innenreinigung" data-subject="Innenreinigung">
+        <img src="assets/media/inside.jpg" alt="Innenreinigung">
         <span>Unterhaltsreinigung,Sonderreinigung,Stiegenhausreinigung,Reinigung aller art,</span>
       </div>
-      <div class="service-card" data-service="Außenreinigung">
-        <img src="./outside.jpg" alt="Außenreinigung">
+      <div class="service-card" data-service="Außenreinigung" data-subject="Außenreinigung">
+        <img src="assets/media/outside.jpg" alt="Außenreinigung">
         <span>Grünanlagen und Winterdienst</span>
       </div>
     </div>
-  </section>
-
-  <section id="contact">
-    <h1>Kontaktieren Sie uns</h1>
-    <form id="contact-form">
-      <input type="text" name="name" placeholder="Ihr Name" required />
-      <input type="email" name="email" placeholder="Ihre Email" required />
-      <textarea name="message" rows="4" placeholder="Ihre Nachricht" required></textarea>
-      <button type="submit">Senden</button>
-    </form>
   </section>
 
   <a href="tel:+436504138873" class="call-button" aria-label="Call us now">
@@ -703,12 +114,18 @@ footer.site-footer a:focus {
   </a>
 
 
-  <!-- Modal -->
-  <div class="modal" id="service-modal">
+  <!-- Contact Modal -->
+  <div class="modal" id="contact-modal">
     <div class="modal-content">
-      <span class="close" id="modal-close">&times;</span>
-      <h2 id="modal-title"></h2>
-      <p>Bitte kontaktieren Sie uns unten über das Formular, um weitere Informationen oder ein Angebot zu erhalten.</p>
+      <span class="close" id="contact-modal-close">&times;</span>
+      <h2 id="contact-modal-title">Kontaktieren Sie uns</h2>
+      <form id="contact-form" class="contact-modal-form">
+        <input type="text" name="name" placeholder="Ihr Name" required />
+        <input type="email" name="email" placeholder="Ihre Email" required />
+        <input type="text" id="contact-subject" name="subject" placeholder="Betreff" readonly required />
+        <textarea name="message" rows="4" placeholder="Ihre Nachricht" required></textarea>
+        <button type="submit">Senden</button>
+      </form>
     </div>
   </div>
 
@@ -716,7 +133,10 @@ footer.site-footer a:focus {
 
 
   <footer class="site-footer">
-  <a href="#" id="privacy-link">Datenschutz &amp; Richtlinien</a>
+  <div class="footer-inner">
+    <div class="footer-brand">Haus &amp; Hof Reinigungsservice</div>
+    <a href="#" id="privacy-link" class="footer-link">Datenschutz &amp; Richtlinien</a>
+  </div>
   </footer>
 
   <!-- Privacy & Policy Modal -->
@@ -776,25 +196,28 @@ footer.site-footer a:focus {
 
     document.querySelectorAll('section').forEach(section => observer.observe(section));
 
-    // Modal
-    const modal = document.getElementById("service-modal");
-    const modalTitle = document.getElementById("modal-title");
-    const closeModal = document.getElementById("modal-close");
+    // Contact modal from service cards
+    const contactModal = document.getElementById("contact-modal");
+    const contactModalTitle = document.getElementById("contact-modal-title");
+    const contactModalClose = document.getElementById("contact-modal-close");
+    const contactSubjectInput = document.getElementById("contact-subject");
 
     document.querySelectorAll('.service-card').forEach(card => {
       card.addEventListener('click', () => {
-        modalTitle.textContent = card.dataset.service;
-        modal.style.display = "flex";
+        const selectedSubject = card.dataset.subject || card.dataset.service;
+        contactModalTitle.textContent = `Kontakt - ${selectedSubject}`;
+        contactSubjectInput.value = selectedSubject;
+        contactModal.style.display = "flex";
       });
     });
 
-    closeModal.addEventListener('click', () => {
-      modal.style.display = "none";
+    contactModalClose.addEventListener('click', () => {
+      contactModal.style.display = "none";
     });
 
     window.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.style.display = "none";
+      if (e.target === contactModal) {
+        contactModal.style.display = "none";
       }
     });
 
@@ -802,6 +225,7 @@ footer.site-footer a:focus {
     document.getElementById('contact-form').addEventListener('submit', e => {
       e.preventDefault();
       alert('Ihre Nachricht wurde gesendet!');
+      contactModal.style.display = "none";
       e.target.reset();
     });
   </script>
