@@ -45,11 +45,11 @@
       align-items: center;
       padding: 12px 18px;
       border-radius: 18px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.12));
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.06));
       border: 1px solid rgba(255, 255, 255, 0.45);
       box-shadow: 0 14px 34px rgba(15, 23, 42, 0.22);
       backdrop-filter: blur(16px) saturate(170%);
-      -webkit-backdrop-filter: blur(16px) saturate(170%);
+      -webkit-backdrop-filter: blur(6px) saturate(170%);
       z-index: 1000;
     }
     nav::before {
@@ -647,32 +647,122 @@ a.footer-link:focus {
 #privacy-modal {
   display: none;
   position: fixed;
-  z-index: 1000;
+  z-index: 10000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: radial-gradient(circle at 20% 10%, rgba(29, 196, 233, 0.14), rgba(2, 6, 23, 0.85));
+  backdrop-filter: blur(6px);
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
-#privacy-modal .modal-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 720px;
-  max-height: 80vh;
+#privacy-modal .privacy-modal-content {
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.96), rgba(244, 250, 255, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 26px 70px rgba(2, 6, 23, 0.45);
+  padding: 26px;
+  border-radius: 20px;
+  max-width: 860px;
+  width: 100%;
+  max-height: min(86vh, 760px);
   overflow-y: auto;
   position: relative;
 }
 
-#privacy-modal .close {
+#privacy-modal .privacy-close {
   position: absolute;
-  right: 12px;
-  top: 8px;
+  right: 14px;
+  top: 14px;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 24px;
+  line-height: 1;
+  border-radius: 999px;
+  color: #0f172a;
+  background: rgba(15, 23, 42, 0.08);
+  transition: background 0.25s ease, transform 0.25s ease;
   cursor: pointer;
 }
 
+#privacy-modal .privacy-close:hover {
+  background: rgba(29, 196, 233, 0.25);
+  transform: scale(1.03);
+}
+
+#privacy-modal .privacy-header {
+  margin-bottom: 16px;
+  padding-right: 40px;
+}
+
+#privacy-modal .privacy-header h2 {
+  margin: 0 0 8px;
+  font-size: 1.9rem;
+  color: #0f172a;
+}
+
+#privacy-modal .privacy-header p {
+  margin: 0;
+  color: #334155;
+  max-width: 680px;
+}
+
+#privacy-modal .privacy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+#privacy-modal .privacy-item {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 14px;
+  padding: 14px;
+  text-align: left;
+}
+
+#privacy-modal .privacy-item h3 {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #0b839c;
+}
+
+#privacy-modal .privacy-item p {
+  margin: 0;
+  font-size: 1rem;
+  color: #0f172a;
+  line-height: 1.5;
+}
+
+#privacy-modal .privacy-item a {
+  color: #0b839c;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+#privacy-modal .privacy-item a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  #privacy-modal .privacy-modal-content {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  #privacy-modal .privacy-header h2 {
+    font-size: 1.45rem;
+  }
+
+  #privacy-modal .privacy-grid {
+    grid-template-columns: 1fr;
+  }
+}
 

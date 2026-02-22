@@ -141,93 +141,41 @@
 
   <!-- Privacy & Policy Modal -->
   <div class="modal" id="privacy-modal">
-    <div class="modal-content">
-      <span class="close" id="privacy-close">&times;</span>
-      <h2>Datenschutz &amp; Richtlinien</h2>
-      <p><strong>Wer wir sind:</strong> HAUS & HOF REINIGUNGSSERVICE .</p>
-      <p><strong>Was wir sammeln:</strong> Kontaktdaten, die Sie übermitteln (Dragana Bogdan, huh-betreuung@outlook.at,)</p>
-      <p><strong>Ihre Rechte:</strong> Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch.</p>
-      <p><strong>Bezirkshauptrmannschaft</strong>Perg</p>
-      <p><strong>UID nummer</strong>ATU82143468</p>
-      <p><strong>Kontakt:</strong> <a href="mailto:huh-betreuung@outlook.at">huh-betreuung@outlook.at</p>
-
+    <div class="modal-content privacy-modal-content">
+      <span class="close privacy-close" id="privacy-close" aria-label="Schließen">&times;</span>
+      <div class="privacy-header">
+        <h2>Datenschutz &amp; Richtlinien</h2>
+        <p>Transparenz und Datenschutz stehen bei uns im Fokus.</p>
+      </div>
+      <div class="privacy-grid">
+        <div class="privacy-item">
+          <h3>Wer wir sind</h3>
+          <p>HAUS &amp; HOF REINIGUNGSSERVICE</p>
+        </div>
+        <div class="privacy-item">
+          <h3>Was wir sammeln</h3>
+          <p>Kontaktdaten, die Sie übermitteln (Dragana Bogdan, huh-betreuung@outlook.at)</p>
+        </div>
+        <div class="privacy-item">
+          <h3>Ihre Rechte</h3>
+          <p>Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch</p>
+        </div>
+        <div class="privacy-item">
+          <h3>Behörde</h3>
+          <p>Bezirkshauptmannschaft Perg</p>
+        </div>
+        <div class="privacy-item">
+          <h3>UID Nummer</h3>
+          <p>ATU82143468</p>
+        </div>
+        <div class="privacy-item">
+          <h3>Kontakt</h3>
+          <p><a href="mailto:huh-betreuung@outlook.at">huh-betreuung@outlook.at</a></p>
+        </div>
+      </div>
     </div>
   </div>
 
-
-  <script>
-
-  const privacyLink = document.getElementById('privacy-link');
-  const privacyModal = document.getElementById('privacy-modal');
-  const privacyClose = document.getElementById('privacy-close');
-
-  privacyLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    privacyModal.style.display = 'flex';
-  });
-
-  privacyClose.addEventListener('click', function() {
-    privacyModal.style.display = 'none';
-  });
-
-  window.addEventListener('click', function(e) {
-    if (e.target === privacyModal) {
-      privacyModal.style.display = 'none';
-    }
-  });
-
-  window.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      privacyModal.style.display = 'none';
-    }
-  });
-
-
-
-
-    // Animate sections
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('section').forEach(section => observer.observe(section));
-
-    // Contact modal from service cards
-    const contactModal = document.getElementById("contact-modal");
-    const contactModalTitle = document.getElementById("contact-modal-title");
-    const contactModalClose = document.getElementById("contact-modal-close");
-    const contactSubjectInput = document.getElementById("contact-subject");
-
-    document.querySelectorAll('.service-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const selectedSubject = card.dataset.subject || card.dataset.service;
-        contactModalTitle.textContent = `Kontakt - ${selectedSubject}`;
-        contactSubjectInput.value = selectedSubject;
-        contactModal.style.display = "flex";
-      });
-    });
-
-    contactModalClose.addEventListener('click', () => {
-      contactModal.style.display = "none";
-    });
-
-    window.addEventListener('click', (e) => {
-      if (e.target === contactModal) {
-        contactModal.style.display = "none";
-      }
-    });
-
-    // Form
-    document.getElementById('contact-form').addEventListener('submit', e => {
-      e.preventDefault();
-      alert('Ihre Nachricht wurde gesendet!');
-      contactModal.style.display = "none";
-      e.target.reset();
-    });
-  </script>
+  <script src="assets/js/script.js"></script>
 </body>
 </html>
