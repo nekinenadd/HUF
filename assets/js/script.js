@@ -62,8 +62,15 @@ window.addEventListener('click', (e) => {
 // Form
 document.getElementById('contact-form').addEventListener('submit', e => {
   e.preventDefault();
-  alert('Ihre Nachricht wurde gesendet!');
+  const formData = new FormData(e.target);
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const subject = formData.get('subject');
+  const message = formData.get('message');
+  const emailSubject = `Kontaktanfrage: ${subject}`;
+  const emailBody = `Name: ${name}\nE-Mail: ${email}\nBetreff: ${subject}\n\nNachricht:\n${message}`;
+
+  window.location.href = `mailto:huh-betreuung@outlook.at?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
   contactModal.style.display = "none";
   e.target.reset();
 });
-
